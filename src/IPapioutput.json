@@ -1,0 +1,70 @@
+{
+  "billno": "IPBR_723_0cd31679",
+  "IPR": "1022",
+  "doctorid": 158,
+  "transactionid": "cash",
+  "admissiondetails": {
+    "IPRNo": "IPR1022",
+    "admission_date": "2023-07-20T18:30:00.000Z",
+    "consultingdoctor": "DR madhav",
+    "departmentname": "Gynecology",
+    "patientid": 100042,
+    "patientname": "Gaurab",
+    "sex": "M",
+    "patientdob": "1992-10-10T18:30:00.000Z",
+    "relativename": "asdfas",
+    "relativerelation": "son",
+    "relativephonenumber": "8165431313",
+    "address": "qrwqrqwr,qweerqwerqw,qwerwqrqw"
+  },
+  "noofitems": 5,
+  "mrp": 32800,
+  "discount": 3870,
+  "gstvalue": 0,
+  "additionalhospitalcharges": 3471.6,
+  "payable": 32401.6,
+  "breakup": {
+    "labchargesdata": [
+      {
+        "serviceName": "CT Scan",
+        "Qty": 2,
+        "TotalMrp": 6000,
+        "Discount": 1200,
+        "Payable": 4800
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      }
+    ],
+    "bedchargesdata": [
+      {
+        "serviceName": "ICU",
+        "Qty": 2,
+        "TotalMrp": 20000,
+        "Discount": 2000,
+        "Payable": 18000
+      },
+      {
+        "serviceName": "General",
+        "Qty": 3,
+        "TotalMrp": 6000,
+        "Discount": 600,
+        "Payable": 5400
+      }
+    ],
+    "otherchargesdata": [
+      {
+        "serviceName": "Registration",
+        "Qty": 1,
+        "TotalMrp": 100,
+        "Discount": 0,
+        "Payable": 100
+      }
+    ],
+    "inpatientdoctorcharges": []
+  }
+}

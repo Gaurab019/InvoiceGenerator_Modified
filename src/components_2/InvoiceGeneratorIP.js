@@ -13,14 +13,15 @@ import asset from "../images/Asset_compressed_v2.png";
 import hospitallogo from "../images/hospital_logo_3.png";
 // import InvoiceAdd from "./InvoiceAdd";
 
-export default function InvoiceGenerator({
+export default function InvoiceGeneratorIP({
   //Adding the variables required for the generation of the OP bill
   patientid,
   patientname,
+  IPR,
   sex,
   doctorname,
   age,
-  phonenumber,
+  relativephone,
   totalmrp,
   additionalhospitalcharges,
   transactionid,
@@ -29,6 +30,8 @@ export default function InvoiceGenerator({
   list,
   invoiceDate,
   invoiceNumber,
+  relativename,
+  relativerelation,
   //Adding the variables required for the generation of the OP bill
 }) {
   const componentRef = useRef();
@@ -65,12 +68,15 @@ export default function InvoiceGenerator({
           <ClientDetails
             invoiceNumber={invoiceNumber}
             invoiceDate={invoiceDate}
+            IPR={IPR}
             patientid={patientid}
             patientname={patientname}
             sex={sex}
             age={age}
             doctorname={doctorname}
-            phone={phonenumber}
+            relativephone={relativephone}
+            relativename={relativename}
+            relativerelation={relativerelation}
           />
 
           <Table list={list} />

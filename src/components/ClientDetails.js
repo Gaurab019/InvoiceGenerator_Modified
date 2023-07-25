@@ -1,39 +1,65 @@
-export default function ClientDetails({
+export default function CpentDetails({
+  invoiceNumber,
+  invoiceDate,
+  patientid,
   patientname,
   sex,
-  dob,
+  age,
   phone,
   doctorname,
 }) {
   return (
     <>
-      <section className="mt-5 mb-5 flex flex-col justify-evenly items-start gap-5 [word-spacing:3px]">
-        <div className="flex justify-evenly items-center gap-10">
-          <p className="text-base  mb-1 flex-1">
-            Patient Name:{" "}
-            <span className=" text-lg ml-5 font-semibold">{patientname}</span>
+      <section
+        className="mt-5 mb-5 flex justify-evenly items-start [word-spacing:3px]"
+        width="100%"
+      >
+        <div className="flex flex-col justify-evenly items-start gap-3">
+          <p className="text-sm  mb-1 [flex: 30]">
+            Bill No :{" "}
+            <span className="text-base ml-2 font-semibold">
+              {" "}
+              {invoiceNumber}
+            </span>
           </p>
-          <p className="text-base  mb-1">
-            Sex: <span className=" text-lg ml-5 font-semibold">{sex}</span>
+          <p className="text-sm  mb-1 [flex: 30]">
+            Patient:{" "}
+            <span className=" text-base ml-2 font-semibold">{patientname}</span>
+          </p>
+          <p className="text-sm  mb-1 [flex: 30]">
+            Mobile:{" "}
+            <span className=" text-base ml-2 font-semibold">{phone}</span>
           </p>
         </div>
-        <div className="flex justify-evenly items-center gap-10">
-          <p className="text-base  mb-1">
-            DOB: <span className=" text-lg ml-5 font-semibold">{dob}</span>
+        <div className="flex flex-col justify-evenly items-start gap-3">
+          <p className="text-sm  mb-1 [flex: 30]">
+            Bill Date :{" "}
+            <span className="text-base ml-2 font-semibold">
+              {" "}
+              {invoiceDate}{" "}
+            </span>
           </p>
-          <p className="text-base  mb-1 w">
-            Phone Number:{" "}
-            <span className=" text-lg ml-5 font-semibold">{phone}</span>
+          <p className="text-sm  mb-1 [flex: 30]">
+            Sex: <span className=" text-base ml-2 font-semibold">{sex}</span>
           </p>
-        </div>
-        <div className="flex justify-evenly items-center gap-10">
-          <p className="text-base  mb-1">
-            Consulting Doctor:{" "}
-            <span className=" text-lg ml-5 font-semibold uppercase">
+          <p className="text-sm  mb-1 [flex: 30]">
+            Ref. By:{" "}
+            <span className=" text-base ml-2 font-semibold uppercase">
               {doctorname}
             </span>
           </p>
-          {/* <p className="text-base  mb-1">
+        </div>
+        <div className="flex flex-col justify-evenly items-start gap-3">
+          <p className="p-1 text-sm  mb-1 [flex: 30]">
+            MRN :{" "}
+            <span className="text-base ml-2 font-semibold"> {patientid} </span>
+          </p>
+          <p className="text-sm  mb-1 [flex: 30]">
+            Age: <span className=" text-base ml-2 font-semibold">{age}</span>
+          </p>
+        </div>
+        <div className="flex justify-evenly items-center gap-10">
+          {/* <p className="text-sm  mb-1 [flex: 30]">
             Address: <span>{address}</span>
           </p> */}
         </div>

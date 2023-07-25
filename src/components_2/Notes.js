@@ -14,10 +14,11 @@ export default function Notes({
               Billed By : {billername}
             </h2>
           </div>
-          <div className="mr-20 flex flex-col gap-5 border-l-[1px] border-black pt-2 pl-2 items-end">
+          <div className="mr-20 pb-5 pt-5 grid grid-cols-2 content-center text-center gap-5 border-l-[1px] border-black pl-2 items-end">
             <h2 className="flex items-end justify-end text-gray-800 text-base font-bold [word-spacing:5px] ">
-              Gross Value : {totalmrp}
+              Gross Value :
             </h2>
+            <p>{totalmrp}</p>
             {/* <h2 className="flex items-end justify-end text-gray-800 text-base font-bold  [word-spacing:5px]">
             Hospital Charges : {additionalhospitalcharges}
           </h2> */}
@@ -27,9 +28,10 @@ export default function Notes({
             {/* <h2 className="flex items-end justify-end text-gray-800 text-base font-bold">
             Gst : {gstvalue}
           </h2> */}
-            <h2 className="mb-5 flex items-end justify-end text-gray-800 text-base font-bold  [word-spacing:5px]">
-              Bill Total : {payable}
+            <h2 className="flex items-end justify-end text-gray-800 text-base font-bold  [word-spacing:5px]">
+              Bill Total :
             </h2>
+            <p>{payable}</p>
           </div>
         </div>
         <div>

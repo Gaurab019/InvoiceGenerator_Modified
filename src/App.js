@@ -10,8 +10,10 @@ import { useState, useRef, useEffect } from "react";
 // import ReactToPrint from "react-to-print";
 // import { DonateButton } from "./buttons";
 import InvoiceGenerator from "./components/InvoiceGenerator";
+import InvoiceGeneratorIP from "./components_2/InvoiceGeneratorIP";
 import InvoiceAdd from "./components/InvoiceAdd";
 import apioutput from "./apioutput.json";
+import IPapioutput from "./IPapioutput.json";
 import { convertbillbreakuptoArray } from "./utils/convertjsontoArray";
 // import { generatePath } from "react-router-dom";
 
@@ -34,6 +36,7 @@ function App() {
   const [price, setPrice] = useState("");
   const [amount, setAmount] = useState("");
   const [list, setList] = useState([]);
+  const [iplist, setipList] = useState([]);
   const [total, setTotal] = useState(0);
   const [width] = useState(641);
   const [generateReport, setGenerateReport] = useState(false);
@@ -47,6 +50,11 @@ function App() {
     setGenerateReport(true);
     let breakuplist = convertbillbreakuptoArray(apioutput.breakup);
     setList(breakuplist);
+  };
+  const generateReportfromIPAPI = () => {
+    setGenerateReport(true);
+    let breakuplist = convertbillbreakuptoArray(IPapioutput.breakup);
+    setipList(breakuplist);
   };
 
   const handlePrint = () => {
@@ -99,7 +107,10 @@ function App() {
           {
             <button
               // onClick={() => setGenerateReport(!generateReport)}
-              onClick={() => generateReportfromAPI()}
+              onClick={() => {
+                generateReportfromAPI();
+                generateReportfromIPAPI();
+              }}
               className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
             >
               Generate/Edit Report
@@ -472,17 +483,70 @@ function App() {
                 patientname={apioutput.opdetails.Patientname}
                 sex={apioutput.opdetails.Sex}
                 doctorname={apioutput.opdetails.ConsultingDoctor}
-                dob={apioutput.opdetails.DOB}
+                age={`${Math.round(
+                  (new Date() - new Date(apioutput.opdetails.DOB)) /
+                    (1000 * 365 * 24 * 3600)
+                )} yrs`}
                 phonenumber={apioutput.opdetails.Phonenumber}
                 totalmrp={apioutput.mrp.toFixed(2)}
                 additionalhospitalcharges={apioutput.additionalhospitalcharges.toFixed(
                   2
                 )}
-                discount={apioutput.discount.toFixed(2)}
+                transactionid={apioutput.transactionid.toUpperCase()}
                 gstvalue={apioutput.gstvalue.toFixed(2)}
                 payable={apioutput.payable.toFixed(2)}
                 list={list}
                 invoiceNumber={apioutput.billno}
+                invoiceDate={new Date().toJSON().slice(0, 10)}
+              />
+            )}
+            {generateReport && (
+              // <InvoiceGenerator
+              //   name={name}
+              //   address={address}
+              //   clientName={clientName}
+              //   clientAddress={clientAddress}
+              //   invoiceDate={invoiceDate}
+              //   dueDate={dueDate}
+              //   description={description}
+              //   quantity={quantity}
+              //   price={price}
+              //   amount={amount}
+              //   list={list}
+              //   setList={setList}
+              //   total={total}
+              //   notes={notes}
+              //   website={website}
+              //   phone={phone}
+              //   bankAccount={bankAccount}
+              //   bankName={bankName}
+              //   email={email}
+              //   setTotal={setTotal}
+              //   invoiceNumber={invoiceNumber}
+              // />
+              <InvoiceGeneratorIP
+                patientid={IPapioutput.admissiondetails.patientid}
+                patientname={IPapioutput.admissiondetails.patientname}
+                IPR={IPapioutput.admissiondetails.IPRNo}
+                sex={IPapioutput.admissiondetails.sex}
+                doctorname={IPapioutput.admissiondetails.consultingdoctor}
+                age={`${Math.round(
+                  (new Date() -
+                    new Date(IPapioutput.admissiondetails.patientdob)) /
+                    (1000 * 365 * 24 * 3600)
+                )} yrs`}
+                relativephone={IPapioutput.admissiondetails.relativephonenumber}
+                relativename={IPapioutput.admissiondetails.relativename}
+                relativerelation={IPapioutput.admissiondetails.relativerelation.toUpperCase()}
+                totalmrp={IPapioutput.mrp.toFixed(2)}
+                additionalhospitalcharges={IPapioutput.additionalhospitalcharges.toFixed(
+                  2
+                )}
+                transactionid={IPapioutput.transactionid.toUpperCase()}
+                gstvalue={IPapioutput.gstvalue.toFixed(2)}
+                payable={IPapioutput.payable.toFixed(2)}
+                list={iplist}
+                invoiceNumber={IPapioutput.billno}
                 invoiceDate={new Date().toJSON().slice(0, 10)}
               />
             )}
