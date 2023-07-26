@@ -11,6 +11,7 @@ import { useState, useRef, useEffect } from "react";
 // import { DonateButton } from "./buttons";
 import InvoiceGenerator from "./components/InvoiceGenerator";
 import InvoiceGeneratorIP from "./components_2/InvoiceGeneratorIP";
+import InvoiceGeneratorRegistration from "./components_3_registration/InvoiceGeneratorRegistration";
 import InvoiceAdd from "./components/InvoiceAdd";
 import apioutput from "./apioutput.json";
 import IPapioutput from "./IPapioutput.json";
@@ -455,38 +456,12 @@ function App() {
           } */}
 
             {generateReport && (
-              // <InvoiceGenerator
-              //   name={name}
-              //   address={address}
-              //   clientName={clientName}
-              //   clientAddress={clientAddress}
-              //   invoiceDate={invoiceDate}
-              //   dueDate={dueDate}
-              //   description={description}
-              //   quantity={quantity}
-              //   price={price}
-              //   amount={amount}
-              //   list={list}
-              //   setList={setList}
-              //   total={total}
-              //   notes={notes}
-              //   website={website}
-              //   phone={phone}
-              //   bankAccount={bankAccount}
-              //   bankName={bankName}
-              //   email={email}
-              //   setTotal={setTotal}
-              //   invoiceNumber={invoiceNumber}
-              // />
               <InvoiceGenerator
                 patientid={apioutput.patientid}
                 patientname={apioutput.opdetails.Patientname}
                 sex={apioutput.opdetails.Sex}
                 doctorname={apioutput.opdetails.ConsultingDoctor}
-                age={`${Math.round(
-                  (new Date() - new Date(apioutput.opdetails.DOB)) /
-                    (1000 * 365 * 24 * 3600)
-                )} yrs`}
+                age={"".concat(apioutput.opdetails.Age, " yrs")}
                 phonenumber={apioutput.opdetails.Phonenumber}
                 totalmrp={apioutput.mrp.toFixed(2)}
                 additionalhospitalcharges={apioutput.additionalhospitalcharges.toFixed(
@@ -501,29 +476,25 @@ function App() {
               />
             )}
             {generateReport && (
-              // <InvoiceGenerator
-              //   name={name}
-              //   address={address}
-              //   clientName={clientName}
-              //   clientAddress={clientAddress}
-              //   invoiceDate={invoiceDate}
-              //   dueDate={dueDate}
-              //   description={description}
-              //   quantity={quantity}
-              //   price={price}
-              //   amount={amount}
-              //   list={list}
-              //   setList={setList}
-              //   total={total}
-              //   notes={notes}
-              //   website={website}
-              //   phone={phone}
-              //   bankAccount={bankAccount}
-              //   bankName={bankName}
-              //   email={email}
-              //   setTotal={setTotal}
-              //   invoiceNumber={invoiceNumber}
-              // />
+              <InvoiceGeneratorRegistration
+                patientid={apioutput.patientid}
+                patientname={apioutput.opdetails.Patientname}
+                sex={apioutput.opdetails.Sex}
+                age={"".concat(apioutput.opdetails.Age, " yrs")}
+                phonenumber={apioutput.opdetails.Phonenumber}
+                totalmrp={apioutput.mrp.toFixed(2)}
+                additionalhospitalcharges={apioutput.additionalhospitalcharges.toFixed(
+                  2
+                )}
+                transactionid={apioutput.transactionid.toUpperCase()}
+                gstvalue={apioutput.gstvalue.toFixed(2)}
+                payable={apioutput.payable.toFixed(2)}
+                list={list}
+                invoiceNumber={apioutput.billno}
+                invoiceDate={new Date().toJSON().slice(0, 10)}
+              />
+            )}
+            {generateReport && (
               <InvoiceGeneratorIP
                 patientid={IPapioutput.admissiondetails.patientid}
                 patientname={IPapioutput.admissiondetails.patientname}
